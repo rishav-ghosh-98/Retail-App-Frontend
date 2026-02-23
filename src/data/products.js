@@ -6,6 +6,19 @@ import Shoes from "../assets/Shoes.jpg"
 import Wallet from "../assets/Wallet.jpg"
 import Sunglass from "../assets/Sunglass.jpg"
 import Backpack from "../assets/Backpack.jpg"
+import Mouse from "../assets/Mouse.jpg"
+import Keyboard from "../assets/Keyboard.jpg"
+import Speaker from "../assets/Speaker.jpg"
+import Jeans from "../assets/Jeans.jpg"
+import Powerbank from "../assets/Powerbank.jpg"
+import Sneakers from "../assets/Sneakers.jpg"
+import Kettle from "../assets/Kettle.jpg"
+import Pan from "../assets/Pan.jpg"
+import Lamp from "../assets/Lamp.jpg"
+import Mug from "../assets/Mug.jpg"
+import Mat from "../assets/Mat.jpg"
+import Protein from "../assets/Protein.jpg"
+
 
 const products = [
   {
@@ -65,7 +78,7 @@ const products = [
     category: "electronics",
     rating: 4.2,
     stock: 35,
-    image: "",
+    image: Mouse,
     description: "High precision RGB gaming mouse."
   },
   {
@@ -75,7 +88,7 @@ const products = [
     category: "electronics",
     rating: 4.7,
     stock: 18,
-    image: "",
+    image: Keyboard,
     description: "RGB mechanical keyboard with blue switches."
   },
   {
@@ -115,7 +128,7 @@ const products = [
     category: "electronics",
     rating: 4.4,
     stock: 22,
-    image: "",
+    image: Speaker,
     description: "Portable waterproof Bluetooth speaker."
   },
   {
@@ -125,7 +138,7 @@ const products = [
     category: "fashion",
     rating: 4.1,
     stock: 38,
-    image: "",
+    image: Jeans,
     description: "Stretchable slim fit denim jeans."
   },
   {
@@ -135,7 +148,7 @@ const products = [
     category: "health",
     rating: 4.5,
     stock: 12,
-    image: "",
+    image: Protein,
     description: "High quality whey protein supplement."
   },
   {
@@ -145,7 +158,7 @@ const products = [
     category: "health",
     rating: 4.3,
     stock: 33,
-    image: "",
+    image: Mat,
     description: "Non-slip eco-friendly yoga mat."
   },
   {
@@ -155,7 +168,7 @@ const products = [
     category: "home",
     rating: 4.2,
     stock: 26,
-    image: "",
+    image: Kettle,
     description: "1.5L stainless steel electric kettle."
   },
   {
@@ -165,7 +178,7 @@ const products = [
     category: "home",
     rating: 4.1,
     stock: 34,
-    image: "",
+    image: Pan,
     description: "Durable non-stick frying pan."
   },
   {
@@ -175,7 +188,7 @@ const products = [
     category: "home",
     rating: 4.3,
     stock: 19,
-    image: "",
+    image: Lamp,
     description: "LED study lamp with brightness control."
   },
   {
@@ -185,7 +198,7 @@ const products = [
     category: "electronics",
     rating: 4.4,
     stock: 27,
-    image: "",
+    image: Powerbank,
     description: "Fast charging 20000mAh power bank."
   },
   {
@@ -195,7 +208,7 @@ const products = [
     category: "fashion",
     rating: 4.2,
     stock: 23,
-    image: "",
+    image: Sneakers,
     description: "Comfortable everyday sneakers."
   },
   {
@@ -205,7 +218,7 @@ const products = [
     category: "home",
     rating: 4.0,
     stock: 60,
-    image: "",
+    image: Mug,
     description: "Set of 6 ceramic coffee mugs."
   }
 ];
