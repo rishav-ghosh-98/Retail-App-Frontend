@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Categories from './pages/Categories.jsx'
+import Products from './pages/Products.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/categories",
     element: <Categories />,
+  },
+  {
+    path:"/products",
+    element: <Products />
   }
 ]);
 createRoot(document.getElementById('root')).render(

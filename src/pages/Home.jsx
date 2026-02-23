@@ -4,6 +4,7 @@ import WomenImage from "../assets/WomenImage.png";
 import Kids from "../assets/Kids.png";
 import Electronics from "../assets/Electronics.png";
 import Beauty from "../assets/Beauty.png";
+import Products from "./Products";
 const Home = () => {
   return (
     <>
@@ -60,6 +61,11 @@ const Home = () => {
             </div>
           </div>
         </div>
+          <div>
+            <NavLink to="/products" className= "text-decoration-none">
+            <p>Explore Products</p>
+            </NavLink>
+          </div>
       </div>
     </>
   );
