@@ -1,10 +1,10 @@
 const ProductCard = ({ product }) => {
-  const imageUrl = `${import.meta.env.VITE_API_URL}${product.image}`; // ✅ full URL
+// const imageUrl = `${import.meta.env.VITE_API_URL}${product.image}`;
 
   return (
     <div className="card h-100 shadow-sm">
       <img
-        src={imageUrl}                          // ✅ use imageUrl instead of product.image
+      src={`${import.meta.env.VITE_API_URL}/images/${product.image.split('/').pop()}`}                
         className="card-img-top"
         alt={product.title}
         style={{ height: "220px", objectFit: "cover" }}

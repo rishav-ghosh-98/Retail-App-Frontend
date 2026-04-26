@@ -1,24 +1,25 @@
 import { useState, useEffect } from "react";
 import api from "../api/config";
-
+import { useLocation } from "react-router-dom";
 const useFetch = (url, initialData) => {
   const [data, setData] = useState(initialData);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     api.get(url)
       .then((res) => {
-        setLoading(true);        // ✅ moved inside the callback
+        setLoading(true);        
         setData(res.data);
       })
       .catch((error) => {
         setError(error.message);
       })
       .finally(() => {
-        setLoading(false);       // ✅ stop loading when done
+        setLoading(false);       
       });
-  }, [url]);
+  }, [url ,location.pathname]);
 
   return { data, loading, error };
 };

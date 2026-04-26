@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/categories",
+    path: "/categories/:categoryId",
     element: <Categories />,
   },
   {
