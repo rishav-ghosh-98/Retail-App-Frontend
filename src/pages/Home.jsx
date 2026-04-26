@@ -70,7 +70,7 @@ const Home = () => {
                 <NavLink to={`/categories/${cat._id}`} className="text-decoration-none">
                 <div style={{ position: "relative" }}>
                     <img
-                      src={`${import.meta.env.VITE_API_URL}/${cat.image}`}
+                      src={`${import.meta.env.VITE_API_URL}/images/${cat.image}`}
                       alt={cat.name}
                       style={{ width: "100%", height: "auto" }}
                     />
