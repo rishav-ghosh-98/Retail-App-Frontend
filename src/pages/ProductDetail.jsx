@@ -1,14 +1,21 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import { useState } from "react";
 
 const ProductDetail = () => {
   const { productId } = useParams();
   const { data: product, loading, error } = useFetch(`/products/${productId}`);
+  const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState("M");
+  const sizes = ["S", "M", "L", "XL", "XXL"];
+  const handleIncrease = () => setQuantity((prev) => prev + 1);
+  const handleDecrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  const isFashion = product?.category === "fashion";
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-  if (!product) return <p>Product not found</p>; // ✅ add this
-    const renderStars = (rating) => {
+  if (!product) return <p>Product not found</p>;
+  const renderStars = (rating) => {
   return [...Array(5)].map((_, i) => (
     <span key={i} style={{ color: i < Math.round(rating) ? "#ffc107" : "#e4e5e9", fontSize: "20px" }}>
       ★
@@ -37,7 +44,30 @@ const ProductDetail = () => {
   <span className="ms-1 text-muted">{product.rating}</span>{renderStars(product.rating)}
 </div>
             <p><strong>₹{product.price}</strong></p>
-           
+            <div className="d-flex align-items-center gap-2 mt-2">
+              <span className="fw-bold">Quantity:</span>
+             <button className="btn btn-outline-secondary btn-sm" onClick={handleDecrease}>−</button>
+            <span>{quantity}</span>
+            <button className="btn btn-outline-secondary btn-sm" onClick={handleIncrease}>+</button>
+</div>
+<br />
+{isFashion && (
+  <div className="d-flex gap-2 mt-2">
+    <span className="fw-bold">Size:</span>
+    {sizes.map((size) => (
+      <button
+        key={size}
+        onClick={() => setSelectedSize(size)}
+        className={`btn btn-sm ${selectedSize === size ? "btn-dark" : "btn-outline-secondary"}`}
+      >
+        {size}
+      </button>
+    ))}
+  </div>
+)}
+<div>
+  <hr className="my-3" /> 
+</div>
           </div>
         </div>
       </div>
