@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useState } from "react";
-
+import { useCart } from "../hooks/useCart";
+import Header from "../components/Header";
 const ProductDetail = () => {
+  const { addToCart } = useCart();
   const { productId } = useParams();
   const { data: product, loading, error } = useFetch(`/products/${productId}`);
   const [quantity, setQuantity] = useState(1);
@@ -16,14 +18,21 @@ const ProductDetail = () => {
   if (error) return <p>Error: {error}</p>;
   if (!product) return <p>Product not found</p>;
   const renderStars = (rating) => {
-  return [...Array(5)].map((_, i) => (
-    <span key={i} style={{ color: i < Math.round(rating) ? "#ffc107" : "#e4e5e9", fontSize: "20px" }}>
-      ★
-    </span>
-  ));
-};
+    return [...Array(5)].map((_, i) => (
+      <span
+        key={i}
+        style={{
+          color: i < Math.round(rating) ? "#ffc107" : "#e4e5e9",
+          fontSize: "20px",
+        }}
+      >
+        ★
+      </span>
+    ));
+  };
   return (
     <>
+    <Header />
       <div className="container">
         <div className="row">
           <div className="col-md-5">
@@ -34,66 +43,84 @@ const ProductDetail = () => {
               style={{ height: "500px", objectFit: "contain", width: "100%" }}
             />
             <button className="btn btn-primary w-100 mt-2">Buy Now</button>
-            <button className="btn btn-secondary w-100 mt-2">
+            <button
+              className="btn btn-secondary w-100 mt-2"
+              onClick={() => addToCart(product)}
+            >
               Add to Cart
             </button>
           </div>
           <div className="col-md-7">
             <h4>{product.title}</h4>
             <div>
-  <span className="ms-1 text-muted">{product.rating}</span>{renderStars(product.rating)}
-</div>
-            <p><strong>₹{product.price}</strong></p>
+              <span className="ms-1 text-muted">{product.rating}</span>
+              {renderStars(product.rating)}
+            </div>
+            <p>
+              <strong>₹{product.price}</strong>
+            </p>
             <div className="d-flex align-items-center gap-2 mt-2">
               <span className="fw-bold">Quantity:</span>
-             <button className="btn btn-outline-secondary btn-sm" onClick={handleDecrease}>−</button>
-            <span>{quantity}</span>
-            <button className="btn btn-outline-secondary btn-sm" onClick={handleIncrease}>+</button>
-</div>
-<br />
-{isFashion && (
-  <div className="d-flex gap-2 mt-2">
-    <span className="fw-bold">Size:</span>
-    {sizes.map((size) => (
-      <button
-        key={size}
-        onClick={() => setSelectedSize(size)}
-        className={`btn btn-sm ${selectedSize === size ? "btn-dark" : "btn-outline-secondary"}`}
-      >
-        {size}
-      </button>
-    ))}
-  </div>
-)}
+              <button
+                className="btn btn-outline-secondary btn-sm"
+                onClick={handleDecrease}
+              >
+                −
+              </button>
+              <span>{quantity}</span>
+              <button
+                className="btn btn-outline-secondary btn-sm"
+                onClick={handleIncrease}
+              >
+                +
+              </button>
+            </div>
+            <br />
+            {isFashion && (
+              <div className="d-flex gap-2 mt-2">
+                <span className="fw-bold">Size:</span>
+                {sizes.map((size) => (
+                  <button
+                    key={size}
+                    onClick={() => setSelectedSize(size)}
+                    className={`btn btn-sm ${selectedSize === size ? "btn-dark" : "btn-outline-secondary"}`}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+            )}
 
-<div>
-  <hr className="my-3" /> 
-</div>
-<div className="d-flex gap-4 mt-3">
-  <div className="text-center">
-    <i className="bi bi-truck fs-4"></i>
-    <p className="small">Free Delivery</p>
-  </div>
-  <div className="text-center">
-    <i className="bi bi-shield-check fs-4"></i>
-    <p className="small">Secure Payment</p>
-  </div>
-  <div className="text-center">
-    <i className="bi bi-arrow-return-left fs-4"></i>
-    <p className="small">10 Days Return</p>
-  </div>
-  <div className="text-center">
-    <i className="bi bi-cash fs-4"></i>
-    <p className="small">Pay on Delivery</p>
-  </div>
-</div>
-<div>
-  <hr />
-  </div>
-  <div>
-      <p><strong>Description: </strong></p>
-        <p>{product.description}</p>
-  </div>
+            <div>
+              <hr className="my-3" />
+            </div>
+            <div className="d-flex gap-4 mt-3">
+              <div className="text-center">
+                <i className="bi bi-truck fs-4"></i>
+                <p className="small">Free Delivery</p>
+              </div>
+              <div className="text-center">
+                <i className="bi bi-shield-check fs-4"></i>
+                <p className="small">Secure Payment</p>
+              </div>
+              <div className="text-center">
+                <i className="bi bi-arrow-return-left fs-4"></i>
+                <p className="small">10 Days Return</p>
+              </div>
+              <div className="text-center">
+                <i className="bi bi-cash fs-4"></i>
+                <p className="small">Pay on Delivery</p>
+              </div>
+            </div>
+            <div>
+              <hr />
+            </div>
+            <div>
+              <p>
+                <strong>Description: </strong>
+              </p>
+              <p>{product.description}</p>
+            </div>
           </div>
         </div>
       </div>

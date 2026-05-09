@@ -7,7 +7,6 @@ const { data: response , loading, error } = useFetch(ENDPOINTS.products);
  const products = response?.products || []; //
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-  console.log(products)
     return (
         <>
         <Header />
@@ -18,7 +17,6 @@ const { data: response , loading, error } = useFetch(ENDPOINTS.products);
                   {products?.map((prod) => (
                     <div key={prod.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                        <ProductCard product={prod} />
-                       {console.log(prod.image)}
                         </div>
                   ))}
                 

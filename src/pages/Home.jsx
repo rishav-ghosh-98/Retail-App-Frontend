@@ -87,7 +87,6 @@ const Home = () => {
                       }}
                     >
                       {cat.name}
-                      {console.log(cat.image)}
                     </div>
                   </div>
                 </NavLink>

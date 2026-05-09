@@ -1,7 +1,8 @@
 import { NavLink, Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
+import { useCart } from "../hooks/useCart";
 const Header = () => {
+const { totalItems } = useCart();
   return (
     <>
       <nav class="navbar navbar-expand-lg bg-light">
@@ -29,7 +30,7 @@ const Header = () => {
                <button class="btn btn-light position-relative">
               <i class="bi bi-cart" style={{ fontSize: "1.5rem" }}></i>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                7
+                {totalItems}
               </span>
               Cart 
             </button>
