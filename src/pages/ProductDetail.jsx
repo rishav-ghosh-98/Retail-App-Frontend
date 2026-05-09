@@ -65,9 +65,35 @@ const ProductDetail = () => {
     ))}
   </div>
 )}
+
 <div>
   <hr className="my-3" /> 
 </div>
+<div className="d-flex gap-4 mt-3">
+  <div className="text-center">
+    <i className="bi bi-truck fs-4"></i>
+    <p className="small">Free Delivery</p>
+  </div>
+  <div className="text-center">
+    <i className="bi bi-shield-check fs-4"></i>
+    <p className="small">Secure Payment</p>
+  </div>
+  <div className="text-center">
+    <i className="bi bi-arrow-return-left fs-4"></i>
+    <p className="small">10 Days Return</p>
+  </div>
+  <div className="text-center">
+    <i className="bi bi-cash fs-4"></i>
+    <p className="small">Pay on Delivery</p>
+  </div>
+</div>
+<div>
+  <hr />
+  </div>
+  <div>
+      <p><strong>Description: </strong></p>
+        <p>{product.description}</p>
+  </div>
           </div>
         </div>
       </div>
