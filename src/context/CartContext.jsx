@@ -4,18 +4,18 @@ import { CartContext } from "../hooks/useCart";
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const addToCart = (product) => {
+  const addToCart = (product, quantityToAdd = 1) => {
     setCart((prev) => {
       const exists = prev.find((item) => item._id === product._id);
       if (exists) {
         // increase quantity if already in cart
         return prev.map((item) =>
           item._id === product._id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + quantityToAdd }
             : item
         );
       }
-      return [...prev, { ...product, quantity: 1 }];
+      return [...prev, { ...product, quantity: quantityToAdd }];
     });
   };
 
