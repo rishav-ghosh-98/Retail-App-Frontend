@@ -1,7 +1,7 @@
 import { useCart } from "../hooks/useCart";
 
 const Cart = () => {
-  const { cart, removeFromCart, totalItems } = useCart();
+  const { cart, removeFromCart, totalItems, addToCart } = useCart();
 
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const deliveryCharges = totalPrice > 0 ? 499 : 0;
@@ -31,9 +31,19 @@ const Cart = () => {
                   {/* Quantity */}
                   <div className="d-flex align-items-center gap-2">
                     <span>Quantity:</span>
-                    <button className="btn btn-outline-secondary btn-sm">−</button>
+                    <button
+                      className="btn btn-outline-secondary btn-sm"
+                      onClick={() => addToCart(item, -1)}
+                    >
+                      −
+                    </button>
                     <span>{item.quantity}</span>
-                    <button className="btn btn-outline-secondary btn-sm">+</button>
+                    <button
+                      className="btn btn-outline-secondary btn-sm"
+                      onClick={() => addToCart(item, 1)}
+                    >
+                      +
+                    </button>
                   </div>
 
                   {/* Buttons */}

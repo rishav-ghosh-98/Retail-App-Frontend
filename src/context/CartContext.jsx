@@ -8,13 +8,19 @@ export const CartProvider = ({ children }) => {
     setCart((prev) => {
       const exists = prev.find((item) => item._id === product._id);
       if (exists) {
-        // increase quantity if already in cart
-        return prev.map((item) =>
-          item._id === product._id
-            ? { ...item, quantity: item.quantity + quantityToAdd }
-            : item
-        );
+        return prev
+          .map((item) =>
+            item._id === product._id
+              ? { ...item, quantity: item.quantity + quantityToAdd }
+              : item
+          )
+          .filter((item) => item.quantity > 0);
       }
+
+      if (quantityToAdd <= 0) {
+        return prev;
+      }
+
       return [...prev, { ...product, quantity: quantityToAdd }];
     });
   };
