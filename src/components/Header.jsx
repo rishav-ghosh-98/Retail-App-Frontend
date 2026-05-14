@@ -1,6 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useCart } from "../hooks/useCart";
+import Wishlist from "../pages/Wishlist";
 const Header = () => {
 const { totalItems } = useCart();
   return (
@@ -22,9 +23,11 @@ const { totalItems } = useCart();
           </div>
           
           <div class="d-flex align-items-center gap-3">
+            <NavLink to="/wishlist">
             <button class="btn btn-light">
               <i class="bi bi-heart" style={{ fontSize: "1.5rem", color: "#d9534f" }}></i>
             </button>
+            </NavLink>
              <button class="btn btn-secondary">Login</button>
              <NavLink to="/cart">
                <button class="btn btn-light position-relative">

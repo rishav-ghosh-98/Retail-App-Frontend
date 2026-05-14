@@ -1,10 +1,34 @@
 import { NavLink } from "react-router-dom";
+import { useWishist } from "../hooks/useWishist";
 const ProductCard = ({ product }) => {
-// const imageUrl = `${import.meta.env.VITE_API_URL}${product.image}`;
-
+    const { addToWishList, isInWishlist } = useWishist();
+    const wishlisted = isInWishlist(product._id);
   return (
     <div className="card h-100 shadow-sm">
       <NavLink to={`/products/${product._id}`} className="text-decoration-none text-dark">
+       <div style={{ position: "relative" }}>
+              <button
+                type="button"
+                className="btn btn-light"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  addToWishList(product);
+                }}
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
+                  zIndex: 1,
+                  borderRadius: "50%",
+                }}
+              >
+                <i
+                  className={`bi ${wishlisted ? "bi-heart-fill" : "bi-heart"}`}
+                  style={{ fontSize: "1.5rem", color: "#d9534f" }}
+                ></i>
+              </button>
+            </div>
       <img
       src={`${import.meta.env.VITE_API_URL}/images/${product.image.split('/').pop()}`}                
         className="card-img-top"
