@@ -1,8 +1,8 @@
 import { useCart } from "../hooks/useCart";
-
+import { useWishist } from "../hooks/useWishist";
 const Cart = () => {
   const { cart, removeFromCart, totalItems, addToCart } = useCart();
-
+  const { addToWishList } = useWishist();
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const deliveryCharges = totalPrice > 0 ? 499 : 0;
   const totalAmount = totalPrice + deliveryCharges;
@@ -54,7 +54,13 @@ const Cart = () => {
                     >
                       Remove From Cart
                     </button>
-                    <button className="btn btn-outline-secondary btn-sm">
+                    <button
+                      className="btn btn-outline-secondary btn-sm"
+                      onClick={() => {
+                        addToWishList(item);
+                        removeFromCart(item._id);
+                      }}
+                    >
                       Move to Wishlist
                     </button>
                   </div>

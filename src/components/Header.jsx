@@ -6,15 +6,15 @@ const Header = () => {
 const { totalItems } = useCart();
   return (
     <>
-      <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <NavLink class="navbar-brand" to="/" className="text-decoration-none">
+      <nav className="navbar navbar-expand-lg bg-light">
+        <div className="container-fluid">
+          <NavLink className="navbar-brand text-decoration-none" to="/">
             MyShoppingSite
           </NavLink>
           
-          <div class="d-flex flex-grow-1 justify-content-center mx-3">
+          <div className="d-flex flex-grow-1 justify-content-center mx-3">
             <input
-              class="form-control"
+              className="form-control"
               type="search"
               placeholder="Search"
               style={{ maxWidth: "400px" }}
@@ -22,17 +22,17 @@ const { totalItems } = useCart();
             />
           </div>
           
-          <div class="d-flex align-items-center gap-3">
+          <div className="d-flex align-items-center gap-3">
             <NavLink to="/wishlist">
-            <button class="btn btn-light">
-              <i class="bi bi-heart" style={{ fontSize: "1.5rem", color: "#d9534f" }}></i>
+            <button className="btn btn-light">
+              <i className="bi bi-heart" style={{ fontSize: "1.5rem", color: "#d9534f" }}></i>
             </button>
             </NavLink>
-             <button class="btn btn-secondary">Login</button>
+             <button className="btn btn-secondary">Login</button>
              <NavLink to="/cart">
-               <button class="btn btn-light position-relative">
-              <i class="bi bi-cart" style={{ fontSize: "1.5rem" }}></i>
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+               <button className="btn btn-light position-relative">
+              <i className="bi bi-cart" style={{ fontSize: "1.5rem" }}></i>
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {totalItems}
               </span>
               Cart 

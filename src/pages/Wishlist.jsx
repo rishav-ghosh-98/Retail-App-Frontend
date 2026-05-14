@@ -20,8 +20,8 @@ const Wishlist = () => {
       <div className="container mt-4">
         <h5 className="text-center mb-4">My Wishlist</h5>
         <div className="row">
-          {wishlist.map((item) => (
-            <div key={item._id} className="col-6 col-sm-4 col-md-3 mb-4">
+          {wishlist.map((item, index) => (
+            <div key={`${item._id}-${index}`} className="col-6 col-sm-4 col-md-3 mb-4">
               <div className="card h-100">
 
                 {/* Image with heart icon */}
