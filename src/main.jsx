@@ -13,6 +13,7 @@ import Products from './pages/Products.jsx'
 import Cart from './pages/Cart.jsx'
 import ProductDetail from './pages/ProductDetail.jsx'
 import Wishlist from './pages/Wishlist.jsx';
+import UserProfile from './pages/UserProfile.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       path: "/wishlist",
       element: < Wishlist />
 
+  },
+  {
+    path: "/profile",
+      element: < UserProfile />
   }
 ]);
 createRoot(document.getElementById('root')).render(
