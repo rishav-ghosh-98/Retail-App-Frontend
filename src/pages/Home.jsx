@@ -5,6 +5,7 @@ import Kids from "../assets/Kids.png";
 import Electronics from "../assets/Electronics.png";
 import Beauty from "../assets/Beauty.png";
 import Products from "./Products";
+import Loader from "../components/Loader";
 import { ENDPOINTS } from "../api/endpoints";
 import useFetch from "../hooks/useFetch";
 const Home = () => {
@@ -17,7 +18,7 @@ const Home = () => {
         <div>
           <div className="container">
             <h3>Categories</h3>
-            {loading && <p>Loading Categories</p>}
+            {loading && <Loader />}
             {error && <p>Error loading categories:{error}</p>}
             {/* <div class="row">
               <div class="col-3" style={{ flex: "0 0 20%" }}>

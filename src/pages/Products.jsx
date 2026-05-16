@@ -1,11 +1,12 @@
 import useFetch from "../hooks/useFetch";
 import Header from "../components/Header"
-import ProductCard from "../components/ProductCard"
+import ProductCard from "../components/ProductCard";
+import Loader from "../components/Loader";
 import { ENDPOINTS } from "../api/endpoints";
 const Products = () => {
 const { data: response , loading, error } = useFetch(ENDPOINTS.products);
  const products = response?.products || []; //
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>Error: {error}</p>;
     return (
         <>

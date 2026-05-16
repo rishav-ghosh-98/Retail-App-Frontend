@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useCart } from "../hooks/useCart";
 import { useWishist } from "../hooks/useWishist";
 import Header from "../components/Header";
+import Loader from "../components/Loader";
 
 const ProductDetail = () => {
   const { addToCart } = useCart();
@@ -17,7 +18,7 @@ const ProductDetail = () => {
   const handleIncrease = () => setQuantity((prev) => prev + 1);
   const handleDecrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>Error: {error}</p>;
   if (!product) return <p>Product not found</p>;
 

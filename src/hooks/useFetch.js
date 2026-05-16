@@ -3,7 +3,7 @@ import api from "../api/config";
 import { useLocation } from "react-router-dom";
 const useFetch = (url, initialData) => {
   const [data, setData] = useState(initialData);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const location = useLocation();
 
