@@ -1,5 +1,6 @@
 import { useCart } from "../hooks/useCart";
 import { useWishist } from "../hooks/useWishist";
+import Header from "../components/Header";
 const Cart = () => {
   const { cart, removeFromCart, totalItems, addToCart } = useCart();
   const { addToWishList } = useWishist();
@@ -7,10 +8,12 @@ const Cart = () => {
   const deliveryCharges = totalPrice > 0 ? 499 : 0;
   const totalAmount = totalPrice + deliveryCharges;
 
-  if (cart.length === 0) return <p className="text-center mt-4">Your cart is empty!</p>;
+  if (cart.length === 0) return <div><Header /><p className="text-center mt-4">Your cart is empty!</p></div>;
 
   return (
+   
     <div className="container mt-4">
+       <Header />
       <h5 className="text-center mb-4">MY CART ({totalItems})</h5>
       <div className="row">
 
