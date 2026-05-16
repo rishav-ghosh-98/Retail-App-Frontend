@@ -1,13 +1,24 @@
 import { useState } from "react";
 import { CartContext } from "../hooks/useCart";
+import toast from "react-hot-toast";
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addToCart = (product, quantityToAdd = 1) => {
+    const exists = cart.find((item) => item._id === product._id);
+
+    if (exists) {
+      if (quantityToAdd > 0) toast.success("Quantity increased!");
+      if (quantityToAdd < 0) toast.success("Quantity decreased!");
+    } else if (quantityToAdd > 0) {
+      toast.success("Added to cart! 🛒");
+    }
+
     setCart((prev) => {
-      const exists = prev.find((item) => item._id === product._id);
-      if (exists) {
+      const existsInPrev = prev.find((item) => item._id === product._id);
+
+      if (existsInPrev) {
         return prev
           .map((item) =>
             item._id === product._id
@@ -17,9 +28,7 @@ export const CartProvider = ({ children }) => {
           .filter((item) => item.quantity > 0);
       }
 
-      if (quantityToAdd <= 0) {
-        return prev;
-      }
+      if (quantityToAdd <= 0) return prev;
 
       return [...prev, { ...product, quantity: quantityToAdd }];
     });
@@ -27,6 +36,7 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = (productId) => {
     setCart((prev) => prev.filter((item) => item._id !== productId));
+    toast.error("Removed from cart!");
   };
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
