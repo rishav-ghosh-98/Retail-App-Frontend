@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useWishist } from "../hooks/useWishist";
+import { useCart } from "../hooks/useCart";
 const ProductCard = ({ product }) => {
     const { addToWishList, isInWishlist } = useWishist();
+    const { addToCart } = useCart();
     const wishlisted = isInWishlist(product._id);
   return (
     <div className="card h-100 shadow-sm">
@@ -38,11 +40,11 @@ const ProductCard = ({ product }) => {
       <div className="card-body d-flex flex-column">
         <h6 className="card-title">{product.title}</h6>
         <p className="text-muted mb-2">₹ {product.price}</p>
-        <div className="mt-auto">
-          <button className="btn btn-dark w-100">Add to Cart</button>
-        </div>
       </div>
       </NavLink>
+      <div className="mt-auto">
+          <button className="btn btn-dark w-100" onClick={() => addToCart(product)}>Add to Cart</button>
+        </div>
     </div>
   );
 };
