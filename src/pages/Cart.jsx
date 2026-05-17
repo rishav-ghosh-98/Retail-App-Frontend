@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 import { useWishist } from "../hooks/useWishist";
 import Header from "../components/Header";
@@ -92,7 +93,9 @@ const Cart = () => {
               <span>₹ {totalAmount}</span>
             </div>
             <hr />
+            <NavLink to="/checkout">
             <button className="btn btn-primary w-100">PLACE ORDER</button>
+            </NavLink>
           </div>
         </div>
 

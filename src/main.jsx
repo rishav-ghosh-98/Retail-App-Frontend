@@ -14,6 +14,7 @@ import Cart from './pages/Cart.jsx'
 import ProductDetail from './pages/ProductDetail.jsx'
 import Wishlist from './pages/Wishlist.jsx';
 import UserProfile from './pages/UserProfile.jsx';
+import Checkout from './pages/Checkout.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
       element: < UserProfile />
+  },
+  {
+    path: "/checkout",
+      element: < Checkout />
   }
 ]);
 createRoot(document.getElementById('root')).render(
