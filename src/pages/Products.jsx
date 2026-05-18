@@ -11,9 +11,10 @@ const Products = () => {
   );
 
   const [showSidebar, setShowSidebar] = useState(false);
-
   const products = response?.products || [];
-
+  // extract unique categories
+  const extractCategory = products.map((prod) => prod.category)
+  const categories = [...new Set(extractCategory)];
   // Find max product price
   const maxPriceOfProducts = products.reduce(
     (max, prod) =>
@@ -43,29 +44,21 @@ const Products = () => {
       <Header />
 
       <div className="container-fluid mt-4">
-
         {/* Top Bar */}
         <div className="d-flex align-items-center mb-4">
-
           <button
             className="btn btn-dark me-3"
-            onClick={() =>
-              setShowSidebar(!showSidebar)
-            }
+            onClick={() => setShowSidebar(!showSidebar)}
           >
             <i className="bi bi-list"></i>
           </button>
 
           <p className="mb-0">
-            <strong>
-              Showing Products (
-              {filteredProducts.length})
-            </strong>
+            <strong>Showing Products ({filteredProducts.length})</strong>
           </p>
         </div>
 
         <div className="row">
-
           {/* Sidebar */}
           {showSidebar && (
             <div
@@ -73,17 +66,11 @@ const Products = () => {
               style={{ minHeight: "100vh" }}
             >
               <div className="d-flex justify-content-between align-items-center mb-4">
-                <h5 className="fw-bold mb-0">
-                  Filters
-                </h5>
+                <h5 className="fw-bold mb-0">Filters</h5>
 
                 <button
                   className="btn btn-sm btn-link text-decoration-none p-0"
-                  onClick={() =>
-                    setSelectedPrice(
-                      maxPriceOfProducts
-                    )
-                  }
+                  onClick={() => setSelectedPrice(maxPriceOfProducts)}
                 >
                   Clear
                 </button>
@@ -91,9 +78,7 @@ const Products = () => {
 
               {/* Price Filter */}
               <div className="mb-4">
-                <h6 className="fw-bold mb-3">
-                  Price
-                </h6>
+                <h6 className="fw-bold mb-3">Price</h6>
 
                 <input
                   type="range"
@@ -101,33 +86,30 @@ const Products = () => {
                   min="0"
                   max={maxPriceOfProducts}
                   value={selectedPrice}
-                  onChange={(e) =>
-                    setSelectedPrice(
-                      Number(e.target.value)
-                    )
-                  }
+                  onChange={(e) => setSelectedPrice(Number(e.target.value))}
                 />
 
-                <p>
-                  Selected Price: ₹{" "}
-                  {selectedPrice}
-                </p>
-                <h6 className="fw-bold mb-3">
-                  Category
-                </h6>
-                
+                <p>Selected Price: ₹ {selectedPrice}</p>
+                <h6 className="fw-bold mb-3">Category</h6>
+                {categories.map((a) => (
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value={a}
+                      id="checkDefault"
+                    />
+                    <label class="form-check-label" for="checkDefault">
+                      {a}
+                    </label>
+                  </div>
+                ))}
               </div>
             </div>
           )}
 
           {/* Products */}
-          <div
-            className={
-              showSidebar
-                ? "col-md-9 col-lg-10"
-                : "col-12"
-            }
-          >
+          <div className={showSidebar ? "col-md-9 col-lg-10" : "col-12"}>
             {filteredProducts.length > 0 ? (
               <div className="row">
                 {filteredProducts.map((prod) => (
@@ -143,13 +125,10 @@ const Products = () => {
               <div className="text-center mt-5">
                 <h4>No products found</h4>
 
-                <p className="text-muted">
-                  Try changing filters
-                </p>
+                <p className="text-muted">Try changing filters</p>
               </div>
             )}
           </div>
-
         </div>
       </div>
     </>
