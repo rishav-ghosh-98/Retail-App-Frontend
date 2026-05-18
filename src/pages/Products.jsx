@@ -15,6 +15,17 @@ const Products = () => {
   // extract unique categories
   const extractCategory = products.map((prod) => prod.category)
   const categories = [...new Set(extractCategory)];
+  const [selectedCategories, setSelectedCategories] = useState([])
+  const handleCategoryChange = (e) => {
+      const value = e.target.value;
+      const isChecked = e.target.checked;
+      if(isChecked){
+        setSelectedCategories((prev) => [...prev, value])
+      }else{
+         setSelectedCategories((prev) => prev.filter((cat) => cat !==value))
+      }
+  }
+  console.log(selectedCategories)
   // Find max product price
   const maxPriceOfProducts = products.reduce(
     (max, prod) =>
@@ -31,9 +42,20 @@ const Products = () => {
   }, [maxPriceOfProducts]);
 
   // Filtered products
-  const filteredProducts = products.filter(
-    (prod) => prod.price <= selectedPrice
-  );
+ const filteredProducts = products.filter((prod) => {
+
+  // Price filter
+  const matchesPrice =
+    prod.price <= selectedPrice;
+
+  // Category filter
+  const matchesCategory =
+    selectedCategories.length === 0 ||
+    selectedCategories.includes(prod.category);
+
+  // Final condition
+  return matchesPrice && matchesCategory;
+});
 
   if (loading) return <Loader />;
 
@@ -97,8 +119,10 @@ const Products = () => {
                       class="form-check-input"
                       type="checkbox"
                       value={a}
-                      id="checkDefault"
+                      id={a}
+                       onChange={handleCategoryChange}
                     />
+                    
                     <label class="form-check-label" for="checkDefault">
                       {a}
                     </label>
