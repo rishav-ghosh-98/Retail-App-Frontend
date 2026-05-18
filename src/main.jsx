@@ -15,6 +15,7 @@ import ProductDetail from './pages/ProductDetail.jsx'
 import Wishlist from './pages/Wishlist.jsx';
 import UserProfile from './pages/UserProfile.jsx';
 import Checkout from './pages/Checkout.jsx';
+import OrderSuccess from './pages/OrderSuccess.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
   {
     path: "/checkout",
       element: < Checkout />
-  }
+  },
+  {
+  path: "/order-success",
+  element: <OrderSuccess />
+}
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>

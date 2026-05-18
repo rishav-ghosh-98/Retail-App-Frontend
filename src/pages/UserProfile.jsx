@@ -1,12 +1,7 @@
 import Header from "../components/Header";
 import { NavLink } from "react-router-dom";
 
-const user = {
-  name: "John Doe",
-  email: "johndoe@example.com",
-  phone: "+91 9876543210",
-  address: "123, Park Street, Kolkata, West Bengal - 700016"
-};
+import { user } from "../data/user"
 
 const UserProfile = () => {
   return (
