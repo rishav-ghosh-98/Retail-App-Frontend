@@ -16,6 +16,7 @@ const Products = () => {
   const extractCategory = products.map((prod) => prod.category)
   const categories = [...new Set(extractCategory)];
   const [selectedCategories, setSelectedCategories] = useState([])
+  const [ selectedRating, setselectedRating] = useState(0)
   const handleCategoryChange = (e) => {
       const value = e.target.value;
       const isChecked = e.target.checked;
@@ -25,11 +26,19 @@ const Products = () => {
          setSelectedCategories((prev) => prev.filter((cat) => cat !==value))
       }
   }
+  // filter by rating 
+  const ratingFilter = (e) => {
+    const value = Number(e.target.value);
+    setselectedRating(value)
+
+  }
+  console.log(selectedRating)
+  //clear Filters
   const handleClearFilters = () => {
     setSelectedCategories([]);
     setSelectedPrice(maxPriceOfProducts);
+    setselectedRating(0)
   }
-  console.log(selectedCategories)
   // Find max product price
   const maxPriceOfProducts = products.reduce(
     (max, prod) =>
@@ -56,9 +65,10 @@ const Products = () => {
   const matchesCategory =
     selectedCategories.length === 0 ||
     selectedCategories.includes(prod.category);
-
+  // Rating filter 
+  const matchesRating = (prod.rating >= selectedRating)
   // Final condition
-  return matchesPrice && matchesCategory;
+  return matchesPrice && matchesCategory && matchesRating;
 });
 
   if (loading) return <Loader />;
@@ -127,12 +137,33 @@ const Products = () => {
                       checked={selectedCategories.includes(a)}
                       onChange={handleCategoryChange}
                     />
-
-                    <label className="form-check-label" htmlFor={`category-${a}`}>
+                    <label
+                      className="form-check-label"
+                      htmlFor={`category-${a}`}
+                    >
                       {a}
                     </label>
                   </div>
                 ))}
+                <br />
+                <div>
+                  <h6 className="fw-bold mb-3">Rating</h6>
+                  <input name="rating" type="radio" className="form-check-input" value="4" checked={selectedRating === 4}onChange={ratingFilter}/>
+
+                  <label className="ms-2"> 4 stars & above</label>
+                  <br />
+                  <input name="rating" type="radio" className="form-check-input" value="3" checked={selectedRating === 3}onChange={ratingFilter}/>
+
+                  <label className="ms-2">{"  "}3 stars & above</label>
+                  <br />
+                  <input name="rating" type="radio" className="form-check-input" value = "2" checked={selectedRating === 2} onChange={ratingFilter}/>
+
+                  <label className="ms-2"> 2 stars & above</label>
+                  <br />
+                  <input name="rating" type="radio" className="form-check-input" value = "1" checked={selectedRating === 1} onChange={ratingFilter}/>
+
+                  <label className="ms-2"> 1 stars & above</label>
+                </div>
               </div>
             </div>
           )}
