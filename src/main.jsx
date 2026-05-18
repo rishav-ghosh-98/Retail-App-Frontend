@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { CartProvider } from "./context/CartContext";
 import { WishListProvider } from './context/WishlistContext.jsx';
+import { AddressProvider } from './context/AddressContext.jsx';
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -16,6 +17,7 @@ import Wishlist from './pages/Wishlist.jsx';
 import UserProfile from './pages/UserProfile.jsx';
 import Checkout from './pages/Checkout.jsx';
 import OrderSuccess from './pages/OrderSuccess.jsx';
+import Address from "./pages/Address.jsx"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,15 +53,21 @@ const router = createBrowserRouter([
   {
   path: "/order-success",
   element: <OrderSuccess />
+},
+{
+  path:"/address",
+  element: <Address />
 }
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <AddressProvider>
     <CartProvider> 
       <WishListProvider> 
         <Toaster position="top-center" />  
       <RouterProvider router={router} />
       </WishListProvider>  
     </CartProvider>
+    </AddressProvider>
   </StrictMode>,
 )
