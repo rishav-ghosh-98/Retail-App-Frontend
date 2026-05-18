@@ -25,6 +25,10 @@ const Products = () => {
          setSelectedCategories((prev) => prev.filter((cat) => cat !==value))
       }
   }
+  const handleClearFilters = () => {
+    setSelectedCategories([]);
+    setSelectedPrice(maxPriceOfProducts);
+  }
   console.log(selectedCategories)
   // Find max product price
   const maxPriceOfProducts = products.reduce(
@@ -92,7 +96,7 @@ const Products = () => {
 
                 <button
                   className="btn btn-sm btn-link text-decoration-none p-0"
-                  onClick={() => setSelectedPrice(maxPriceOfProducts)}
+                  onClick={handleClearFilters}
                 >
                   Clear
                 </button>
@@ -114,16 +118,17 @@ const Products = () => {
                 <p>Selected Price: ₹ {selectedPrice}</p>
                 <h6 className="fw-bold mb-3">Category</h6>
                 {categories.map((a) => (
-                  <div class="form-check">
+                  <div className="form-check" key={a}>
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       value={a}
-                      id={a}
-                       onChange={handleCategoryChange}
+                      id={`category-${a}`}
+                      checked={selectedCategories.includes(a)}
+                      onChange={handleCategoryChange}
                     />
-                    
-                    <label class="form-check-label" for="checkDefault">
+
+                    <label className="form-check-label" htmlFor={`category-${a}`}>
                       {a}
                     </label>
                   </div>
