@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useState } from "react";
 import { useCart } from "../hooks/useCart";
@@ -62,7 +62,9 @@ const ProductDetail = () => {
                 style={{ height: "500px", objectFit: "contain", width: "100%" }}
               />
             </div>
+            <NavLink to="/checkout">
             <button className="btn btn-primary w-100 mt-2">Buy Now</button>
+            </NavLink>
             <button
               className="btn btn-secondary w-100 mt-2"
               onClick={() => addToCart(product, quantity)}

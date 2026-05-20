@@ -2,11 +2,12 @@ import Header from "../components/Header";
 import { useCart } from "../hooks/useCart";
 import { useAddress } from "../hooks/useAddress";
 import { useNavigate } from "react-router-dom";
+import { useOrder } from "../hooks/useOrder";
 import toast from "react-hot-toast";
 
 const Checkout = () => {
-  const { cart, totalItems, clearCart } = useCart();
-
+  const { cart, totalItems, clearCart, getCartTotal } = useCart();
+  const { addOrder } = useOrder()
   const {
     addresses,
     selectedId,
@@ -32,9 +33,17 @@ const Checkout = () => {
 
     toast.success("Order placed successfully! 🎉");
 
-    clearCart();
-
+    
+    const order = {
+    id: `ORD-${Date.now()}`,
+    date: new Date().toISOString(),
+    items: [...cart],
+    totalAmount: getCartTotal
+  }
+    addOrder(order)
+    console.log(order)
     navigate("/order-success");
+    clearCart();
   };
 
   return (
