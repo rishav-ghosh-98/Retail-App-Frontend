@@ -8,7 +8,10 @@ const Orders = () => {
       <div className="container">
         <h1 className="mt-4">My Orders</h1>
         {orders.length === 0 ? (
-          <h2>No orders Yet</h2>
+            <div className="container mt-4">
+                 <h2 style={{ textAlign: "center" }}>No orders Yet</h2>
+            </div>
+         
         ) : (
           orders.map((order) => (
             <div
