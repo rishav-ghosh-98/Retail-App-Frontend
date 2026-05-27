@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { useOrder } from "../hooks/useOrder";
 const Orders = () => {
   const { orders } = useOrder();
@@ -52,6 +53,7 @@ const Orders = () => {
           ))
         )}
       </div>
+      <Footer />
       {console.log(orders)}
     </>
   );

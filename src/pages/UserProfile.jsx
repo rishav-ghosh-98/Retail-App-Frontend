@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { NavLink } from "react-router-dom";
 
 import { user } from "../data/user"
@@ -39,6 +40,7 @@ const UserProfile = () => {
 
         </div>
       </div>
+      <Footer />
     </>
   );
 };

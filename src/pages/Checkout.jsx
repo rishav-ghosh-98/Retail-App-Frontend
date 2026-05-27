@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { useCart } from "../hooks/useCart";
 import { useAddress } from "../hooks/useAddress";
 import { useNavigate } from "react-router-dom";
@@ -177,6 +178,7 @@ const Checkout = () => {
 
         </div>
       </div>
+      <Footer />
     </>
   );
 };
