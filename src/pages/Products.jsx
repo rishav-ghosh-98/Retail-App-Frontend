@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch";
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
+import { useSearch } from "../hooks/useSearch";
 import { ENDPOINTS } from "../api/endpoints";
 
 const Products = () => {
@@ -10,6 +11,7 @@ const Products = () => {
 
   const [showSidebar, setShowSidebar] = useState(false);
   const products = response?.products || [];
+  const { searchTerm } = useSearch();
 
   const extractCategory = products.map((prod) => prod.category);
   const categories = [...new Set(extractCategory)];
@@ -57,7 +59,10 @@ const Products = () => {
       selectedCategories.length === 0 ||
       selectedCategories.includes(prod.category);
     const matchesRating = prod.rating >= selectedRating;
-    return matchesPrice && matchesCategory && matchesRating;
+    const matchesSearch = prod.title
+    .toLowerCase()
+    .includes(searchTerm.toLowerCase());
+    return matchesPrice && matchesCategory && matchesRating && matchesSearch;
   });
 
   // sort after filtering

@@ -1,9 +1,11 @@
 import { NavLink, Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useCart } from "../hooks/useCart";
+import { useSearch } from "../hooks/useSearch";
 import Wishlist from "../pages/Wishlist";
 const Header = () => {
   const { totalItems } = useCart();
+  const { searchTerm, setSearchTerm } = useSearch();
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -17,6 +19,8 @@ const Header = () => {
               className="form-control"
               type="search"
               placeholder="Search"
+               value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               style={{ maxWidth: "400px" }}
               aria-label="Search"
             />

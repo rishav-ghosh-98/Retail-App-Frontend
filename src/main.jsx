@@ -7,6 +7,7 @@ import { CartProvider } from "./context/CartContext";
 import { WishListProvider } from './context/WishlistContext.jsx';
 import { AddressProvider } from './context/AddressContext.jsx';
 import { OrderProvider } from './context/OrderContext.jsx';
+import { SearchProvider } from './context/Searchcontext.jsx';
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -67,15 +68,19 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    
     <AddressProvider>
     <CartProvider> 
       <OrderProvider>
+      <SearchProvider>
       <WishListProvider> 
         <Toaster position="top-center" />  
       <RouterProvider router={router} />
       </WishListProvider>  
+       </SearchProvider>
        </OrderProvider>
     </CartProvider>
     </AddressProvider>
+   
   </StrictMode>,
 )
