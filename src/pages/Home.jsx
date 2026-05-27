@@ -71,7 +71,7 @@ const Home = () => {
         <br />
         <div>
           <NavLink to="/products" className="text-decoration-none">
-            <button type="button" className="btn btn-primary">Explore Products</button>
+            <button type="button" className="btn btn-dark">Explore Products</button>
           </NavLink>
         </div>
       </div>
