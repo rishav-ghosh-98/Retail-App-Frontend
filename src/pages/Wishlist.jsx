@@ -43,7 +43,7 @@ const Wishlist = () => {
                   <img
                     src={`${import.meta.env.VITE_API_URL}${item.image}`}
                     alt={item.title}
-                    className="card-img-top"
+                    className="card-img-top img-fluid"
                     style={{ height: "200px", objectFit: "contain" }}
                   />
                 </div>

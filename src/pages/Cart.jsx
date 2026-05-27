@@ -19,7 +19,7 @@ const Cart = () => {
       <div className="row">
 
         {/* LEFT - Cart Items */}
-        <div className="col-md-8">
+        <div className="col-12 col-md-8">
           {cart.map((item) => (
             <div key={item._id} className="card p-3 mb-3">
               <div className="d-flex gap-3">
@@ -75,7 +75,7 @@ const Cart = () => {
         </div>
 
         {/* RIGHT - Price Details */}
-        <div className="col-md-4">
+        <div className="col-12 col-md-4">
           <div className="card p-3">
             <h6 className="fw-bold">PRICE DETAILS</h6>
             <hr />

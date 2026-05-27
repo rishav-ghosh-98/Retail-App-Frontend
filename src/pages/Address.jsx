@@ -128,7 +128,7 @@ const Address = () => {
             </div>
 
             <div className="row mb-2">
-              <div className="col-6">
+              <div className="col-12 col-md-6">
                 <label className="form-label">City</label>
                 <input
                   className="form-control"
@@ -139,7 +139,7 @@ const Address = () => {
                 />
               </div>
 
-              <div className="col-6">
+              <div className="col-12 col-md-6">
                 <label className="form-label">Pincode</label>
                 <input
                   className="form-control"

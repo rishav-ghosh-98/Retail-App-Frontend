@@ -93,7 +93,7 @@ const Products = () => {
 
         <div className="row">
           {showSidebar && (
-            <div className="col-md-3 col-lg-2 bg-light border-end p-4" style={{ minHeight: "100vh" }}>
+            <div className="col-12 col-md-3 col-lg-2 bg-light border-end p-4" style={{ minHeight: "100vh" }}>
               <div className="d-flex justify-content-between align-items-center mb-4">
                 <h5 className="fw-bold mb-0">Filters</h5>
                 <button
@@ -173,7 +173,7 @@ const Products = () => {
             </div>
           )}
 
-          <div className={showSidebar ? "col-md-9 col-lg-10" : "col-12"}>
+          <div className={showSidebar ? "col-12 col-md-9 col-lg-10" : "col-12"}>
             {sortedProducts.length > 0 ? (
               <div className="row">
                 {sortedProducts.map((prod) => (

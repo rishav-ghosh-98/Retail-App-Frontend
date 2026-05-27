@@ -40,7 +40,7 @@ const ProductDetail = () => {
       <Header />
       <div className="container mt-4">
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-12 col-md-5">
             <div style={{ position: "relative" }}>
               <button
                 className="btn btn-light"
@@ -74,7 +74,7 @@ const ProductDetail = () => {
           </div>
 
           {/* RIGHT - Product Details */}
-          <div className="col-md-7">
+          <div className="col-12 col-md-7">
             <h4>{product.title}</h4>
             <div>
               {renderStars(product.rating)}

@@ -28,8 +28,7 @@ const Home = () => {
               {categories.map((cat) => (
                 <div
                   key={cat._id}
-                  className="col-3"
-                  style={{ flex: "0 0 20%" }}
+                  className="col-6 col-md-4 col-lg-2 mb-4"
                 >
                   <NavLink
                     to={`/categories/${cat._id}`}
@@ -39,8 +38,8 @@ const Home = () => {
                       <img
                         src={cat.image}
                         alt={cat.name}
+                        className="img-fluid rounded"
                         style={{
-                          width: "100%",
                           height: "250px",
                           objectFit: "cover",
                           borderRadius: "10px",
