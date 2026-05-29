@@ -68,19 +68,19 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    
-    <AddressProvider>
-    <CartProvider> 
-      <OrderProvider>
-      <SearchProvider>
-      <WishListProvider> 
-        <Toaster position="top-center" />  
-      <RouterProvider router={router} />
-      </WishListProvider>  
-       </SearchProvider>
-       </OrderProvider>
-    </CartProvider>
-    </AddressProvider>
-   
+    <div className="App">
+      <AddressProvider>
+        <CartProvider>
+          <OrderProvider>
+            <SearchProvider>
+              <WishListProvider>
+                <Toaster position="top-center" />
+                <RouterProvider router={router} />
+              </WishListProvider>
+            </SearchProvider>
+          </OrderProvider>
+        </CartProvider>
+      </AddressProvider>
+    </div>
   </StrictMode>,
 )

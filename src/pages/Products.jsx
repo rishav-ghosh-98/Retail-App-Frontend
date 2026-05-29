@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
+import Footer from "../components/Footer";
 import Loader from "../components/Loader";
 import { useSearch } from "../hooks/useSearch";
 import { ENDPOINTS } from "../api/endpoints";
@@ -191,6 +192,7 @@ const Products = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

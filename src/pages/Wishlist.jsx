@@ -1,6 +1,7 @@
 import { useWishist } from "../hooks/useWishist";
 import { useCart } from "../hooks/useCart";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Wishlist = () => {
   const { wishlist, removeFromWishList } = useWishist();
@@ -11,6 +12,7 @@ const Wishlist = () => {
       <>
         <Header />
         <p className="text-center mt-4">Your Wishlist is empty!</p>
+        <Footer />
       </>
     );
 
@@ -44,7 +46,7 @@ const Wishlist = () => {
                     src={`${import.meta.env.VITE_API_URL}${item.image}`}
                     alt={item.title}
                     className="card-img-top img-fluid"
-                    style={{ height: "200px", objectFit: "contain" }}
+                    style={{ height: "220px", objectFit: "cover", width: "100%" }}
                   />
                 </div>
 
@@ -67,6 +69,7 @@ const Wishlist = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

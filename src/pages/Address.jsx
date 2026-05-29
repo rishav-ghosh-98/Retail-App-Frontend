@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import { useAddress } from "../hooks/useAddress";
-
+import Footer from "../components/Footer";
 const Address = () => {
   const {
     addresses,
@@ -238,6 +238,7 @@ const Address = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </>
   );
 };
