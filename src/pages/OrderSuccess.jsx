@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const OrderSuccess = () => {
   return (
@@ -13,6 +14,7 @@ const OrderSuccess = () => {
           Continue Shopping
         </NavLink>
       </div>
+      <Footer />
     </>
   );
 };

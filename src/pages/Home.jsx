@@ -8,72 +8,48 @@ import Products from "./Products";
 import Loader from "../components/Loader";
 import { ENDPOINTS } from "../api/endpoints";
 import useFetch from "../hooks/useFetch";
+import Footer from "../components/Footer";
 const Home = () => {
   const { data: response, loading, error } = useFetch(ENDPOINTS.categories);
   const categories = response?.data?.categories || [];
   return (
     <>
-      <div>
-        <br />
-        <div>
-          <div className="container">
-            <div className="md-4">
-               <h3>Categories</h3>
-            </div>
-           
-
-            {loading && <Loader />}
-            {error && <p>Error loading categories:{error}</p>}
-            <div className="row">
-              {categories.map((cat) => (
-                <div
-                  key={cat._id}
-                  className="col-6 col-md-4 col-lg-2 mb-4"
-                >
-                  <NavLink
-                    to={`/categories/${cat._id}`}
-                    className="text-decoration-none"
-                  >
-                    <div style={{ position: "relative" }}>
-                      <img
-                        src={cat.image}
-                        alt={cat.name}
-                        className="img-fluid rounded"
-                        style={{
-                          height: "250px",
-                          objectFit: "cover",
-                          borderRadius: "10px",
-                        }}
-                      />
-                      <div
-                        style={{
-                          position: "absolute",
-                          bottom: 0,
-                          width: "100%",
-                          background: "rgba(255,255,255,0.8)",
-                          textAlign: "center",
-                          padding: "4px 0",
-                          fontWeight: "bold",
-                          textTransform: "capitalize",
-                        }}
-                      >
-                        {cat.name}
-                      </div>
-                    </div>
-                  </NavLink>
-                </div>
-              ))}
-            </div>
-          </div>
+      <div className="container mt-4 page-section">
+        <div className="text-center mb-4">
+          <h3>Categories</h3>
         </div>
-        <hr />
-        <br />
-        <div>
-          <NavLink to="/products" className="text-decoration-none">
-            <button type="button" className="btn btn-dark">Explore Products</button>
+
+        {loading && <Loader />}
+        {error && <p className="text-danger text-center">Error loading categories: {error}</p>}
+
+        <div className="row justify-content-center gx-4 gy-4">
+          {categories.map((cat) => (
+            <div key={cat._id} className="col-6 col-md-4 col-lg-2">
+              <NavLink to={`/categories/${cat._id}`} className="text-decoration-none">
+                <div className="category-card rounded shadow-sm bg-white d-flex flex-column align-items-stretch">
+                  <div className="card-image">
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="img-fluid w-100"
+                    />
+                  </div>
+                  <div className="category-caption text-center mt-2" style={{ textTransform: "capitalize" }}>
+                    {cat.name}
+                  </div>
+                </div>
+              </NavLink>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-4">
+          <NavLink to="/products" className="btn btn-dark px-4 py-2">
+            Explore Products
           </NavLink>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

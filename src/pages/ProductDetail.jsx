@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useCart } from "../hooks/useCart";
 import { useWishist } from "../hooks/useWishist";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Loader from "../components/Loader";
 
 const ProductDetail = () => {
@@ -139,6 +140,7 @@ const ProductDetail = () => {
 
         </div>
       </div>
+      <Footer />
     </>
   );
 };
