@@ -76,7 +76,7 @@ const ProductDetail = () => {
 
           {/* RIGHT - Product Details */}
           <div className="col-12 col-md-7">
-            <h4>{product.title}</h4>
+            <h4 style={{ marginTop: "1rem" }}>{product.title}</h4>
             <div>
               {renderStars(product.rating)}
               <span className="ms-1 text-muted">{product.rating}</span>

@@ -11,8 +11,8 @@ const Header = () => {
     <>
     <div className="custom-header">
       <nav className="navbar navbar-expand-lg bg-light">
-        <div className="container">
-          <NavLink className="navbar-brand text-decoration-none d-flex align-items-center" to="/">
+        <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
+          <NavLink className="navbar-brand text-decoration-none d-flex align-items-center" to="/" style={{ flexShrink: 0 }}>
             <div className="brand-logo">
               <span className="brand-accent">My</span>
               <span className="brand-main">Shopping</span>
@@ -20,19 +20,19 @@ const Header = () => {
             </div>
           </NavLink>
 
-          <div className="d-flex flex-grow-1 justify-content-center mx-3">
+          <div className="d-flex flex-grow-1 justify-content-center" style={{ margin: "0 1rem" }}>
             <input
               className="form-control"
               type="search"
               placeholder="Search"
-               value={searchTerm}
+              value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ maxWidth: "400px" }}
+              style={{ maxWidth: "400px", width: "100%" }}
               aria-label="Search"
             />
           </div>
 
-          <div className="d-flex align-items-center gap-2">
+          <div className="d-flex align-items-center gap-2" style={{ flexShrink: 0 }}>
             <NavLink to="/wishlist" className="btn btn-light d-flex align-items-center gap-2">
               <i className="bi bi-heart" style={{ fontSize: "1.3rem", color: "#d9534f" }}></i>
               <span>Wishlist</span>

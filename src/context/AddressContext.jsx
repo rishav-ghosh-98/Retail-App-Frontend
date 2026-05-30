@@ -1,20 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AddressContext } from "../hooks/useAddress";
 
-export const AddressProvider = ({ children }) => {
-  const [addresses, setAddresses] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      phone: "+91 9876543210",
-      street: "123, Park Street",
-      city: "Kolkata",
-      state: "West Bengal",
-      pincode: "700016",
-    },
-  ]);
+const DEFAULT_ADDRESSES = [
+  {
+    id: 1,
+    name: "John Doe",
+    phone: "+91 9876543210",
+    street: "123, Park Street",
+    city: "Kolkata",
+    state: "West Bengal",
+    pincode: "700016",
+  },
+];
 
-  const [selectedId, setSelectedId] = useState(addresses[0]?.id ?? null);
+export const AddressProvider = ({ children }) => {
+  // Initialize addresses from localStorage or use defaults
+  const [addresses, setAddresses] = useState(() => {
+    const storedAddresses = localStorage.getItem("addresses");
+    return storedAddresses ? JSON.parse(storedAddresses) : DEFAULT_ADDRESSES;
+  });
+
+  const [selectedId, setSelectedId] = useState(() => {
+    const storedSelectedId = localStorage.getItem("selectedAddressId");
+    return storedSelectedId ? parseInt(storedSelectedId) : (addresses[0]?.id ?? null);
+  });
+
+  // Save addresses to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("addresses", JSON.stringify(addresses));
+  }, [addresses]);
+
+  // Save selectedId to localStorage whenever it changes
+  useEffect(() => {
+    if (selectedId) {
+      localStorage.setItem("selectedAddressId", selectedId.toString());
+    }
+  }, [selectedId]);
 
   const addAddress = (address) => {
     setAddresses((prev) => [...prev, { ...address, id: Date.now() }]);
